@@ -1,13 +1,19 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Body, HttpStatus, Injectable, Res } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { User } from '../interfaces/user.interface';
+import { Model } from 'mongoose';
+import { Response } from 'express';
+import { Book } from '../interfaces/book.interface';
 
 @Injectable()
 export class UserService {
+  constructor(@InjectModel('User') private userModel: Model<User>) {}
 
-  getUsers(): string {
-    return 'This is users';
+  getUsers() {
+    return this.userModel.find({});
   }
 
-  addUser(@Body() body): string {
-    return 'Add user';
+  async addUser(@Body() body: User): Promise<any> {
+    return this.userModel.create(body);
   }
 }
