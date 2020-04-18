@@ -8,6 +8,7 @@ export class BookService {
   }
 
   addBook(@Body() body): string {
+    console.log('Book Get clicks')
     return 'Add book';
   }
 
