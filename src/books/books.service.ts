@@ -1,8 +1,7 @@
-import { Body, HttpStatus, Injectable, Res } from '@nestjs/common';
+import { Body, Injectable, Res } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Book } from '../interfaces/book.interface';
 import { Model } from 'mongoose';
-import { Response } from 'express';
 
 @Injectable()
 export class BookService {
